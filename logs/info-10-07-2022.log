@@ -1,0 +1,187 @@
+10/07/2022 17:38:35 INFO  fa.training.repository.impl.CustomerRepositoryImpl - Close transaction at: 2022-07-10T17:38:35.603
+10/07/2022 17:38:35 INFO  fa.training.annotation.resolver.InjectResolver - Open session at: 2022-07-10T17:38:35.639
+10/07/2022 17:38:35 INFO  fa.training.repository.impl.CustomerRepositoryImpl - Query data base success and retrieve data at: 2022-07-10T17:38:35.643
+10/07/2022 17:38:35 DEBUG org.hibernate.SQL - 
+    select
+        customer0_.Customer_Id as customer1_2_,
+        customer0_.Address as address2_2_,
+        customer0_.Birth_Date as birth_da3_2_,
+        customer0_.Customer_Name as customer4_2_,
+        customer0_.Phone as phone5_2_ 
+    from
+        Customer customer0_ 
+    where
+        customer0_.Phone=?
+10/07/2022 17:38:35 INFO  fa.training.repository.impl.CustomerRepositoryImpl - Close transaction at: 2022-07-10T17:38:35.679
+10/07/2022 17:38:37 INFO  fa.training.annotation.resolver.InjectResolver - Open session at: 2022-07-10T17:38:37.945
+10/07/2022 17:38:37 INFO  fa.training.repository.impl.ApartmentRepositoryImpl - Query data base success and retrieve data at: 2022-07-10T17:38:37.949
+10/07/2022 17:38:37 DEBUG org.hibernate.SQL - 
+    select
+        apartment0_.apartment_id as apartmen1_0_,
+        apartment0_.Apartment_Code as apartmen2_0_,
+        apartment0_.Door_Direction as door_dir3_0_,
+        apartment0_.Num_Bedroom as num_bedr4_0_,
+        apartment0_.Price as price5_0_,
+        apartment0_.Status as status6_0_ 
+    from
+        Apartment apartment0_ 
+    where
+        apartment0_.Status=?
+10/07/2022 17:38:37 INFO  fa.training.repository.impl.ApartmentRepositoryImpl - Close transaction at: 2022-07-10T17:38:37.966
+10/07/2022 17:38:41 INFO  fa.training.annotation.resolver.InjectResolver - Open session at: 2022-07-10T17:38:41.869
+10/07/2022 17:38:41 INFO  fa.training.repository.impl.ApartmentRepositoryImpl - Query data base success and retrieve data at: 2022-07-10T17:38:41.872
+10/07/2022 17:38:41 DEBUG org.hibernate.SQL - 
+    select
+        apartment0_.apartment_id as apartmen1_0_,
+        apartment0_.Apartment_Code as apartmen2_0_,
+        apartment0_.Door_Direction as door_dir3_0_,
+        apartment0_.Num_Bedroom as num_bedr4_0_,
+        apartment0_.Price as price5_0_,
+        apartment0_.Status as status6_0_ 
+    from
+        Apartment apartment0_ 
+    where
+        apartment0_.Apartment_Code=?
+10/07/2022 17:38:41 INFO  fa.training.repository.impl.ApartmentRepositoryImpl - Close transaction at: 2022-07-10T17:38:41.878
+10/07/2022 17:38:43 INFO  fa.training.annotation.resolver.InjectResolver - Open session at: 2022-07-10T17:38:43.588
+10/07/2022 17:38:43 INFO  fa.training.repository.impl.EmployeeRepositoryImpl - Query data base success and retrieve data at: 2022-07-10T17:38:43.596
+10/07/2022 17:38:43 DEBUG org.hibernate.SQL - 
+    select
+        employee0_.Employee_Id as employee1_3_0_,
+        role1_.Role_Id as role_id1_4_1_,
+        bills2_.Bill_Id as bill_id1_1_2_,
+        employee0_.Employee_Name as employee2_3_0_,
+        employee0_.Role_Id as role_id3_3_0_,
+        role1_.Role_Name as role_nam2_4_1_,
+        bills2_.Apartment_Id as apartmen4_1_2_,
+        bills2_.Buy_Date as buy_date2_1_2_,
+        bills2_.Customer_Id as customer5_1_2_,
+        bills2_.Employee_Id as employee6_1_2_,
+        bills2_.Price as price3_1_2_,
+        bills2_.Employee_Id as employee6_1_0__,
+        bills2_.Bill_Id as bill_id1_1_0__ 
+    from
+        Employee employee0_ 
+    inner join
+        Role role1_ 
+            on employee0_.Role_Id=role1_.Role_Id 
+    inner join
+        Bill bills2_ 
+            on employee0_.Employee_Id=bills2_.Employee_Id 
+    where
+        count(bills2_.Bill_Id)<3 
+        and role1_.Role_Name=?
+10/07/2022 17:38:43 INFO  fa.training.repository.impl.EmployeeRepositoryImpl - Close transaction at: 2022-07-10T17:38:43.609
+10/07/2022 17:38:43 INFO  fa.training.annotation.resolver.InjectResolver - Open session at: 2022-07-10T17:38:43.628
+10/07/2022 17:38:43 INFO  fa.training.repository.impl.EmployeeRepositoryImpl - Query data base success and retrieve data at: 2022-07-10T17:38:43.632
+10/07/2022 17:38:43 DEBUG org.hibernate.SQL - 
+    select
+        employee0_.Employee_Id as employee1_3_0_,
+        role1_.Role_Id as role_id1_4_1_,
+        employee0_.Employee_Name as employee2_3_0_,
+        employee0_.Role_Id as role_id3_3_0_,
+        role1_.Role_Name as role_nam2_4_1_ 
+    from
+        Employee employee0_ 
+    inner join
+        Role role1_ 
+            on employee0_.Role_Id=role1_.Role_Id 
+    where
+        role1_.Role_Name=?
+10/07/2022 17:38:43 INFO  fa.training.repository.impl.EmployeeRepositoryImpl - Close transaction at: 2022-07-10T17:38:43.642
+10/07/2022 17:38:59 INFO  fa.training.annotation.resolver.InjectResolver - Open session at: 2022-07-10T17:38:59.944
+10/07/2022 17:42:23 DEBUG fa.training.config.HibernateConfig - Scan entities package success
+10/07/2022 17:42:23 DEBUG fa.training.config.HibernateConfig - Add Bill to Metadata
+10/07/2022 17:42:23 DEBUG fa.training.config.HibernateConfig - Add Employee to Metadata
+10/07/2022 17:42:23 DEBUG fa.training.config.HibernateConfig - Add Apartment to Metadata
+10/07/2022 17:42:23 DEBUG fa.training.config.HibernateConfig - Add Role to Metadata
+10/07/2022 17:42:23 DEBUG fa.training.config.HibernateConfig - Add Customer to Metadata
+10/07/2022 17:42:25 DEBUG fa.training.config.HibernateConfig - Create Session Factory success
+10/07/2022 17:42:31 INFO  fa.training.annotation.resolver.InjectResolver - Open session at: 2022-07-10T17:42:31.380
+10/07/2022 17:42:31 INFO  fa.training.repository.impl.CustomerRepositoryImpl - Query data base success and retrieve data at: 2022-07-10T17:42:31.482
+10/07/2022 17:42:31 DEBUG org.hibernate.SQL - 
+    select
+        customer0_.Customer_Id as customer1_2_0_,
+        bills1_.Bill_Id as bill_id1_1_1_,
+        customer0_.Address as address2_2_0_,
+        customer0_.Birth_Date as birth_da3_2_0_,
+        customer0_.Customer_Name as customer4_2_0_,
+        customer0_.Phone as phone5_2_0_,
+        bills1_.Apartment_Id as apartmen4_1_1_,
+        bills1_.Buy_Date as buy_date2_1_1_,
+        bills1_.Customer_Id as customer5_1_1_,
+        bills1_.Employee_Id as employee6_1_1_,
+        bills1_.Price as price3_1_1_,
+        bills1_.Customer_Id as customer5_1_0__,
+        bills1_.Bill_Id as bill_id1_1_0__ 
+    from
+        Customer customer0_ 
+    inner join
+        Bill bills1_ 
+            on customer0_.Customer_Id=bills1_.Customer_Id 
+    where
+        customer0_.Phone=?
+10/07/2022 17:42:31 INFO  fa.training.repository.impl.CustomerRepositoryImpl - Close transaction at: 2022-07-10T17:42:31.508
+10/07/2022 17:42:31 INFO  fa.training.annotation.resolver.InjectResolver - Open session at: 2022-07-10T17:42:31.557
+10/07/2022 17:42:31 INFO  fa.training.repository.impl.CustomerRepositoryImpl - Query data base success and retrieve data at: 2022-07-10T17:42:31.561
+10/07/2022 17:42:31 DEBUG org.hibernate.SQL - 
+    select
+        customer0_.Customer_Id as customer1_2_,
+        customer0_.Address as address2_2_,
+        customer0_.Birth_Date as birth_da3_2_,
+        customer0_.Customer_Name as customer4_2_,
+        customer0_.Phone as phone5_2_ 
+    from
+        Customer customer0_ 
+    where
+        customer0_.Phone=?
+10/07/2022 17:42:31 INFO  fa.training.repository.impl.CustomerRepositoryImpl - Close transaction at: 2022-07-10T17:42:31.596
+10/07/2022 17:42:36 INFO  fa.training.annotation.resolver.InjectResolver - Open session at: 2022-07-10T17:42:36.719
+10/07/2022 17:42:36 INFO  fa.training.repository.impl.ApartmentRepositoryImpl - Query data base success and retrieve data at: 2022-07-10T17:42:36.723
+10/07/2022 17:42:36 DEBUG org.hibernate.SQL - 
+    select
+        apartment0_.apartment_id as apartmen1_0_,
+        apartment0_.Apartment_Code as apartmen2_0_,
+        apartment0_.Door_Direction as door_dir3_0_,
+        apartment0_.Num_Bedroom as num_bedr4_0_,
+        apartment0_.Price as price5_0_,
+        apartment0_.Status as status6_0_ 
+    from
+        Apartment apartment0_ 
+    where
+        apartment0_.Status=?
+10/07/2022 17:42:36 INFO  fa.training.repository.impl.ApartmentRepositoryImpl - Close transaction at: 2022-07-10T17:42:36.737
+10/07/2022 17:43:48 DEBUG fa.training.config.HibernateConfig - Scan entities package success
+10/07/2022 17:43:48 DEBUG fa.training.config.HibernateConfig - Add Bill to Metadata
+10/07/2022 17:43:48 DEBUG fa.training.config.HibernateConfig - Add Employee to Metadata
+10/07/2022 17:43:48 DEBUG fa.training.config.HibernateConfig - Add Apartment to Metadata
+10/07/2022 17:43:48 DEBUG fa.training.config.HibernateConfig - Add Role to Metadata
+10/07/2022 17:43:48 DEBUG fa.training.config.HibernateConfig - Add Customer to Metadata
+10/07/2022 17:43:49 DEBUG fa.training.config.HibernateConfig - Create Session Factory success
+10/07/2022 17:43:54 INFO  fa.training.annotation.resolver.InjectResolver - Open session at: 2022-07-10T17:43:54.398
+10/07/2022 17:43:54 INFO  fa.training.repository.impl.CustomerRepositoryImpl - Query data base success and retrieve data at: 2022-07-10T17:43:54.501
+10/07/2022 17:43:54 DEBUG org.hibernate.SQL - 
+    select
+        customer0_.Customer_Id as customer1_2_0_,
+        bills1_.Bill_Id as bill_id1_1_1_,
+        customer0_.Address as address2_2_0_,
+        customer0_.Birth_Date as birth_da3_2_0_,
+        customer0_.Customer_Name as customer4_2_0_,
+        customer0_.Phone as phone5_2_0_,
+        bills1_.Apartment_Id as apartmen4_1_1_,
+        bills1_.Buy_Date as buy_date2_1_1_,
+        bills1_.Customer_Id as customer5_1_1_,
+        bills1_.Employee_Id as employee6_1_1_,
+        bills1_.Price as price3_1_1_,
+        bills1_.Customer_Id as customer5_1_0__,
+        bills1_.Bill_Id as bill_id1_1_0__ 
+    from
+        Customer customer0_ 
+    inner join
+        Bill bills1_ 
+            on customer0_.Customer_Id=bills1_.Customer_Id 
+    where
+        customer0_.Phone=?
+10/07/2022 17:43:54 INFO  fa.training.repository.impl.CustomerRepositoryImpl - Close transaction at: 2022-07-10T17:43:54.528
+10/07/2022 17:43:54 INFO  fa.training.annotation.resolver.InjectResolver - Open session at: 2022-07-10T17:43:54.556
+10/07/2022 17:43:54 INFO  fa.training.repository.impl.CustomerRepositoryImpl - Query data base success and retrieve data at: 2022-07-10T17:43:54.559

@@ -36,7 +36,7 @@ public class HibernateConfig {
                 hibernateProperties.put(Environment.PASS, HibernateConfig.DB.PASSWORD.getValue());
                 hibernateProperties.put(Environment.DIALECT, HibernateConfig.DB.DIALECT.getValue());
                 hibernateProperties.put(Environment.AUTOCOMMIT, "false");
-                hibernateProperties.put(Environment.SHOW_SQL, "true");
+                hibernateProperties.put(Environment.SHOW_SQL, "fail");
                 hibernateProperties.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
                 hibernateProperties.put(Environment.FORMAT_SQL, "true");
                 hibernateProperties.put(Environment.HBM2DDL_AUTO, "update");

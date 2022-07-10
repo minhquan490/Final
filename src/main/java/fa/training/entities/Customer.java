@@ -14,6 +14,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Index;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.io.Serializable;
@@ -23,7 +24,7 @@ import java.util.Objects;
 import java.util.Set;
 
 @Entity
-@Table(name = "Customer")
+@Table(name = "Customer", indexes = @Index(name = "idx_customer_phone", columnList = "Phone"))
 @Getter
 @Setter
 @NoArgsConstructor
@@ -39,7 +40,7 @@ public class Customer implements Serializable {
     @NonNull
     private String customerName;
 
-    @Column(name = "Phone", length = 10)
+    @Column(name = "Phone", length = 10, unique = true)
     @NonNull
     private String phone;
 

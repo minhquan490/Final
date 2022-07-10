@@ -13,12 +13,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Index;
 import javax.persistence.Table;
 import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-@Table(name = "Apartment")
+@Table(name = "Apartment", indexes = {@Index(name = "idx_apartment_status", columnList = "Status"),
+                                      @Index(name = "idx_apartment_code", columnList = "Apartment_Code"),
+                                      @Index(name = "idx_apartment_bedroom", columnList = "Num_Bedroom")})
 @Getter
 @Setter
 @NoArgsConstructor
@@ -63,5 +66,18 @@ public class Apartment implements Serializable {
     @Override
     public int hashCode() {
         return getClass().hashCode();
+    }
+
+    public enum Status {
+        AVAILABLE("available"), NOT_AVAILABLE("not_available");
+
+        private final String value;
+        Status(String value) {
+            this.value = value;
+        }
+
+        public String getValue() {
+            return value;
+        }
     }
 }

@@ -1,0 +1,482 @@
+09/07/2022 16:39:37 ERROR fa.training.config.HibernateConfig - Unable to set auto commit to false for JDBC Connection used for DDL execution
+org.hibernate.exception.JDBCConnectionException: Unable to set auto commit to false for JDBC Connection used for DDL execution
+	at org.hibernate.exception.internal.SQLStateConversionDelegate.convert(SQLStateConversionDelegate.java:112) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:37) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:113) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:99) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.resource.transaction.backend.jdbc.internal.DdlTransactionIsolatorNonJtaImpl.release(DdlTransactionIsolatorNonJtaImpl.java:90) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:137) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:192) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:81) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:327) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:471) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:728) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at fa.training.config.HibernateConfig.getSessionFactory(HibernateConfig.java:68) ~[classes/:?]
+	at fa.training.annotation.resolver.InjectResolver.<clinit>(InjectResolver.java:18) ~[classes/:?]
+	at fa.training.Application.run(Application.java:15) ~[classes/:?]
+	at fa.training.Main.main(Main.java:8) ~[classes/:?]
+Caused by: com.microsoft.sqlserver.jdbc.SQLServerException: The connection is closed.
+	at com.microsoft.sqlserver.jdbc.SQLServerException.makeFromDriverError(SQLServerException.java:237) ~[mssql-jdbc-11.1.1.jre8-preview.jar:?]
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.checkClosed(SQLServerConnection.java:1549) ~[mssql-jdbc-11.1.1.jre8-preview.jar:?]
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.setAutoCommit(SQLServerConnection.java:4135) ~[mssql-jdbc-11.1.1.jre8-preview.jar:?]
+	at org.hibernate.resource.transaction.backend.jdbc.internal.DdlTransactionIsolatorNonJtaImpl.release(DdlTransactionIsolatorNonJtaImpl.java:87) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	... 10 more
+09/07/2022 16:39:37 ERROR fa.training.annotation.resolver.InjectResolver - Can not call newInstance() on the Class for java.lang.Class
+java.lang.IllegalAccessException: Can not call newInstance() on the Class for java.lang.Class
+	at java.lang.Class.newInstance(Class.java:406) ~[?:1.8.0_312]
+	at fa.training.annotation.resolver.InjectResolver.inject(InjectResolver.java:36) ~[classes/:?]
+	at fa.training.Application.run(Application.java:15) ~[classes/:?]
+	at fa.training.Main.main(Main.java:8) ~[classes/:?]
+09/07/2022 16:41:10 ERROR fa.training.config.HibernateConfig - Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment]
+org.hibernate.service.spi.ServiceException: Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:275) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:237) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:214) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.id.factory.internal.DefaultIdentifierGeneratorFactory.injectServices(DefaultIdentifierGeneratorFactory.java:178) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.injectDependencies(AbstractServiceRegistryImpl.java:286) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:243) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:214) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.<init>(InFlightMetadataCollectorImpl.java:176) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:127) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.build(MetadataBuildingProcess.java:86) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.boot.internal.MetadataBuilderImpl.build(MetadataBuilderImpl.java:479) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.boot.internal.MetadataBuilderImpl.build(MetadataBuilderImpl.java:85) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:709) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at fa.training.config.HibernateConfig.getSessionFactory(HibernateConfig.java:68) ~[classes/:?]
+	at fa.training.annotation.resolver.InjectResolver.<clinit>(InjectResolver.java:18) ~[classes/:?]
+	at fa.training.Application.run(Application.java:15) ~[classes/:?]
+	at fa.training.Main.main(Main.java:8) ~[classes/:?]
+Caused by: org.hibernate.exception.JDBCConnectionException: Error calling Driver#connect
+	at org.hibernate.exception.internal.SQLStateConversionDelegate.convert(SQLStateConversionDelegate.java:112) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:37) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:113) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.engine.jdbc.connections.internal.BasicConnectionCreator.convertSqlException(BasicConnectionCreator.java:118) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverConnectionCreator.makeConnection(DriverConnectionCreator.java:41) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.engine.jdbc.connections.internal.BasicConnectionCreator.createConnection(BasicConnectionCreator.java:58) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections.addConnections(DriverManagerConnectionProviderImpl.java:409) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections.<init>(DriverManagerConnectionProviderImpl.java:275) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections.<init>(DriverManagerConnectionProviderImpl.java:249) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections$Builder.build(DriverManagerConnectionProviderImpl.java:453) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.buildPool(DriverManagerConnectionProviderImpl.java:98) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.configure(DriverManagerConnectionProviderImpl.java:73) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.configureService(StandardServiceRegistryImpl.java:107) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:246) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:214) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.buildJdbcConnectionAccess(JdbcEnvironmentInitiator.java:146) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:66) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:35) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:101) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:263) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	... 16 more
+Caused by: com.microsoft.sqlserver.jdbc.SQLServerException: The TCP/IP connection to the host localhost, port 1433 has failed. Error: "Connection refused (Connection refused). Verify the connection properties. Make sure that an instance of SQL Server is running on the host and accepting TCP/IP connections at the port. Make sure that TCP connections to the port are not blocked by a firewall.".
+	at com.microsoft.sqlserver.jdbc.SQLServerException.makeFromDriverError(SQLServerException.java:237) ~[mssql-jdbc-11.1.1.jre8-preview.jar:?]
+	at com.microsoft.sqlserver.jdbc.SQLServerException.ConvertConnectExceptionToSQLServerException(SQLServerException.java:288) ~[mssql-jdbc-11.1.1.jre8-preview.jar:?]
+	at com.microsoft.sqlserver.jdbc.SocketFinder.findSocket(IOBuffer.java:2497) ~[mssql-jdbc-11.1.1.jre8-preview.jar:?]
+	at com.microsoft.sqlserver.jdbc.TDSChannel.open(IOBuffer.java:764) ~[mssql-jdbc-11.1.1.jre8-preview.jar:?]
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connectHelper(SQLServerConnection.java:3273) ~[mssql-jdbc-11.1.1.jre8-preview.jar:?]
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.login(SQLServerConnection.java:2923) ~[mssql-jdbc-11.1.1.jre8-preview.jar:?]
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connectInternal(SQLServerConnection.java:2763) ~[mssql-jdbc-11.1.1.jre8-preview.jar:?]
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connect(SQLServerConnection.java:1657) ~[mssql-jdbc-11.1.1.jre8-preview.jar:?]
+	at com.microsoft.sqlserver.jdbc.SQLServerDriver.connect(SQLServerDriver.java:1063) ~[mssql-jdbc-11.1.1.jre8-preview.jar:?]
+	at org.hibernate.engine.jdbc.connections.internal.DriverConnectionCreator.makeConnection(DriverConnectionCreator.java:38) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.engine.jdbc.connections.internal.BasicConnectionCreator.createConnection(BasicConnectionCreator.java:58) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections.addConnections(DriverManagerConnectionProviderImpl.java:409) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections.<init>(DriverManagerConnectionProviderImpl.java:275) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections.<init>(DriverManagerConnectionProviderImpl.java:249) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections$Builder.build(DriverManagerConnectionProviderImpl.java:453) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.buildPool(DriverManagerConnectionProviderImpl.java:98) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.configure(DriverManagerConnectionProviderImpl.java:73) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.configureService(StandardServiceRegistryImpl.java:107) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:246) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:214) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.buildJdbcConnectionAccess(JdbcEnvironmentInitiator.java:146) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:66) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:35) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:101) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:263) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	... 16 more
+09/07/2022 16:42:57 ERROR fa.training.annotation.resolver.InjectResolver - Can not call newInstance() on the Class for java.lang.Class
+java.lang.IllegalAccessException: Can not call newInstance() on the Class for java.lang.Class
+	at java.lang.Class.newInstance(Class.java:406) ~[?:1.8.0_312]
+	at fa.training.annotation.resolver.InjectResolver.inject(InjectResolver.java:36) ~[classes/:?]
+	at fa.training.Application.run(Application.java:15) ~[classes/:?]
+	at fa.training.Main.main(Main.java:8) ~[classes/:?]
+09/07/2022 16:43:47 ERROR fa.training.annotation.resolver.InjectResolver - ang.Class
+java.lang.ClassNotFoundException: ang.Class
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:387) ~[?:1.8.0_312]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:418) ~[?:1.8.0_312]
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:352) ~[?:1.8.0_312]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:351) ~[?:1.8.0_312]
+	at java.lang.Class.forName0(Native Method) ~[?:1.8.0_312]
+	at java.lang.Class.forName(Class.java:264) ~[?:1.8.0_312]
+	at fa.training.annotation.resolver.InjectResolver.inject(InjectResolver.java:36) ~[classes/:?]
+	at fa.training.Application.run(Application.java:15) ~[classes/:?]
+	at fa.training.Main.main(Main.java:8) ~[classes/:?]
+09/07/2022 16:46:41 ERROR fa.training.annotation.resolver.InjectResolver - Can not call newInstance() on the Class for java.lang.Class
+java.lang.IllegalAccessException: Can not call newInstance() on the Class for java.lang.Class
+	at java.lang.Class.newInstance(Class.java:406) ~[?:1.8.0_312]
+	at fa.training.annotation.resolver.InjectResolver.inject(InjectResolver.java:36) ~[classes/:?]
+	at fa.training.Application.run(Application.java:15) ~[classes/:?]
+	at fa.training.Main.main(Main.java:8) ~[classes/:?]
+10/07/2022 10:31:25 ERROR fa.training.annotation.resolver.InjectResolver - java.util.Scanner
+java.lang.InstantiationException: java.util.Scanner
+	at java.lang.Class.newInstance(Class.java:427) ~[?:1.8.0_312]
+	at fa.training.annotation.resolver.InjectResolver.inject(InjectResolver.java:57) ~[classes/:?]
+	at fa.training.Application.run(Application.java:15) ~[classes/:?]
+	at fa.training.Main.main(Main.java:8) ~[classes/:?]
+Caused by: java.lang.NoSuchMethodException: java.util.Scanner.<init>()
+	at java.lang.Class.getConstructor0(Class.java:3082) ~[?:1.8.0_312]
+	at java.lang.Class.newInstance(Class.java:412) ~[?:1.8.0_312]
+	... 3 more
+10/07/2022 10:33:50 ERROR fa.training.annotation.resolver.InjectResolver - java.util.Scanner
+java.lang.InstantiationException: java.util.Scanner
+	at java.lang.Class.newInstance(Class.java:427) ~[?:1.8.0_312]
+	at fa.training.annotation.resolver.InjectResolver.inject(InjectResolver.java:57) ~[classes/:?]
+	at fa.training.Application.run(Application.java:15) ~[classes/:?]
+	at fa.training.Main.main(Main.java:8) ~[classes/:?]
+Caused by: java.lang.NoSuchMethodException: java.util.Scanner.<init>()
+	at java.lang.Class.getConstructor0(Class.java:3082) ~[?:1.8.0_312]
+	at java.lang.Class.newInstance(Class.java:412) ~[?:1.8.0_312]
+	... 3 more
+10/07/2022 10:45:26 ERROR fa.training.annotation.resolver.InjectResolver - java.util.Scanner
+java.lang.InstantiationException: java.util.Scanner
+	at java.lang.Class.newInstance(Class.java:427) ~[?:1.8.0_312]
+	at fa.training.annotation.resolver.InjectResolver.inject(InjectResolver.java:57) ~[classes/:?]
+	at fa.training.Application.run(Application.java:15) ~[classes/:?]
+	at fa.training.Main.main(Main.java:8) ~[classes/:?]
+Caused by: java.lang.NoSuchMethodException: java.util.Scanner.<init>()
+	at java.lang.Class.getConstructor0(Class.java:3082) ~[?:1.8.0_312]
+	at java.lang.Class.newInstance(Class.java:412) ~[?:1.8.0_312]
+	... 3 more
+10/07/2022 10:45:46 ERROR fa.training.annotation.resolver.InjectResolver - java.util.Scanner.<init>(java.util.Scanner)
+java.lang.NoSuchMethodException: java.util.Scanner.<init>(java.util.Scanner)
+	at java.lang.Class.getConstructor0(Class.java:3082) ~[?:1.8.0_312]
+	at java.lang.Class.getConstructor(Class.java:1825) ~[?:1.8.0_312]
+	at fa.training.annotation.resolver.InjectResolver.inject(InjectResolver.java:60) ~[classes/:?]
+	at fa.training.Application.run(Application.java:15) ~[classes/:?]
+	at fa.training.Main.main(Main.java:8) ~[classes/:?]
+10/07/2022 10:48:44 ERROR fa.training.annotation.resolver.InjectResolver - java.util.Scanner.<init>(java.util.Scanner)
+java.lang.NoSuchMethodException: java.util.Scanner.<init>(java.util.Scanner)
+	at java.lang.Class.getConstructor0(Class.java:3082) ~[?:1.8.0_312]
+	at java.lang.Class.getConstructor(Class.java:1825) ~[?:1.8.0_312]
+	at fa.training.annotation.resolver.InjectResolver.inject(InjectResolver.java:60) ~[classes/:?]
+	at fa.training.Application.run(Application.java:15) ~[classes/:?]
+	at fa.training.Main.main(Main.java:8) ~[classes/:?]
+10/07/2022 12:01:42 ERROR fa.training.repository.impl.CustomerRepositoryImpl - NoResultException is cause
+10/07/2022 12:01:42 ERROR fa.training.repository.impl.CustomerRepositoryImpl - No entity found for query
+javax.persistence.NoResultException: No entity found for query
+	at org.hibernate.query.internal.AbstractProducedQuery.getSingleResult(AbstractProducedQuery.java:1667) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at fa.training.repository.impl.CustomerRepositoryImpl.get(CustomerRepositoryImpl.java:150) ~[classes/:?]
+	at fa.training.controller.CustomerController.login(CustomerController.java:17) ~[classes/:?]
+	at fa.training.Application.run(Application.java:30) ~[classes/:?]
+	at fa.training.Main.main(Main.java:12) ~[classes/:?]
+10/07/2022 12:16:49 ERROR fa.training.repository.impl.CustomerRepositoryImpl - NoResultException is cause
+10/07/2022 12:16:49 ERROR fa.training.repository.impl.CustomerRepositoryImpl - No entity found for query
+javax.persistence.NoResultException: No entity found for query
+	at org.hibernate.query.internal.AbstractProducedQuery.getSingleResult(AbstractProducedQuery.java:1667) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at fa.training.repository.impl.CustomerRepositoryImpl.get(CustomerRepositoryImpl.java:150) ~[classes/:?]
+	at fa.training.controller.CustomerController.login(CustomerController.java:17) ~[classes/:?]
+	at fa.training.Application.run(Application.java:30) ~[classes/:?]
+	at fa.training.Main.main(Main.java:12) ~[classes/:?]
+10/07/2022 12:23:28 ERROR fa.training.repository.impl.CustomerRepositoryImpl - NoResultException is cause
+10/07/2022 12:23:28 ERROR fa.training.repository.impl.CustomerRepositoryImpl - No entity found for query
+javax.persistence.NoResultException: No entity found for query
+	at org.hibernate.query.internal.AbstractProducedQuery.getSingleResult(AbstractProducedQuery.java:1667) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at fa.training.repository.impl.CustomerRepositoryImpl.get(CustomerRepositoryImpl.java:150) ~[classes/:?]
+	at fa.training.controller.CustomerController.login(CustomerController.java:17) ~[classes/:?]
+	at fa.training.Application.run(Application.java:30) ~[classes/:?]
+	at fa.training.Main.main(Main.java:12) ~[classes/:?]
+10/07/2022 12:24:40 ERROR fa.training.repository.impl.CustomerRepositoryImpl - NoResultException is cause
+10/07/2022 12:24:40 ERROR fa.training.repository.impl.CustomerRepositoryImpl - No entity found for query
+javax.persistence.NoResultException: No entity found for query
+	at org.hibernate.query.internal.AbstractProducedQuery.getSingleResult(AbstractProducedQuery.java:1667) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at fa.training.repository.impl.CustomerRepositoryImpl.get(CustomerRepositoryImpl.java:150) ~[classes/:?]
+	at fa.training.controller.CustomerController.login(CustomerController.java:17) ~[classes/:?]
+	at fa.training.Application.run(Application.java:30) ~[classes/:?]
+	at fa.training.Main.main(Main.java:12) ~[classes/:?]
+10/07/2022 13:23:02 ERROR fa.training.repository.impl.CustomerRepositoryImpl - NoResultException is cause
+10/07/2022 13:23:02 ERROR fa.training.repository.impl.CustomerRepositoryImpl - No entity found for query
+javax.persistence.NoResultException: No entity found for query
+	at org.hibernate.query.internal.AbstractProducedQuery.getSingleResult(AbstractProducedQuery.java:1667) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at fa.training.repository.impl.CustomerRepositoryImpl.get(CustomerRepositoryImpl.java:150) ~[classes/:?]
+	at fa.training.controller.CustomerController.login(CustomerController.java:17) ~[classes/:?]
+	at fa.training.Application.run(Application.java:34) ~[classes/:?]
+	at fa.training.Main.main(Main.java:8) ~[classes/:?]
+10/07/2022 13:24:25 ERROR fa.training.repository.impl.CustomerRepositoryImpl - NoResultException is cause
+10/07/2022 13:24:25 ERROR fa.training.repository.impl.CustomerRepositoryImpl - No entity found for query
+javax.persistence.NoResultException: No entity found for query
+	at org.hibernate.query.internal.AbstractProducedQuery.getSingleResult(AbstractProducedQuery.java:1667) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at fa.training.repository.impl.CustomerRepositoryImpl.get(CustomerRepositoryImpl.java:150) ~[classes/:?]
+	at fa.training.controller.CustomerController.login(CustomerController.java:17) ~[classes/:?]
+	at fa.training.Application.run(Application.java:34) ~[classes/:?]
+	at fa.training.Main.main(Main.java:8) ~[classes/:?]
+10/07/2022 13:24:56 ERROR fa.training.repository.impl.CustomerRepositoryImpl - NoResultException is cause
+10/07/2022 13:24:56 ERROR fa.training.repository.impl.CustomerRepositoryImpl - No entity found for query
+javax.persistence.NoResultException: No entity found for query
+	at org.hibernate.query.internal.AbstractProducedQuery.getSingleResult(AbstractProducedQuery.java:1667) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at fa.training.repository.impl.CustomerRepositoryImpl.get(CustomerRepositoryImpl.java:150) ~[classes/:?]
+	at fa.training.controller.CustomerController.login(CustomerController.java:17) ~[classes/:?]
+	at fa.training.Application.run(Application.java:34) ~[classes/:?]
+	at fa.training.Main.main(Main.java:8) ~[classes/:?]
+10/07/2022 13:27:08 ERROR fa.training.repository.impl.CustomerRepositoryImpl - NoResultException is cause
+10/07/2022 13:27:08 ERROR fa.training.repository.impl.CustomerRepositoryImpl - No entity found for query
+javax.persistence.NoResultException: No entity found for query
+	at org.hibernate.query.internal.AbstractProducedQuery.getSingleResult(AbstractProducedQuery.java:1667) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at fa.training.repository.impl.CustomerRepositoryImpl.get(CustomerRepositoryImpl.java:150) ~[classes/:?]
+	at fa.training.controller.CustomerController.login(CustomerController.java:17) ~[classes/:?]
+	at fa.training.Application.run(Application.java:36) ~[classes/:?]
+	at fa.training.Main.main(Main.java:8) ~[classes/:?]
+10/07/2022 13:28:21 ERROR fa.training.repository.impl.CustomerRepositoryImpl - NoResultException is cause
+10/07/2022 13:28:21 ERROR fa.training.repository.impl.CustomerRepositoryImpl - No entity found for query
+javax.persistence.NoResultException: No entity found for query
+	at org.hibernate.query.internal.AbstractProducedQuery.getSingleResult(AbstractProducedQuery.java:1667) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at fa.training.repository.impl.CustomerRepositoryImpl.get(CustomerRepositoryImpl.java:150) ~[classes/:?]
+	at fa.training.controller.CustomerController.login(CustomerController.java:17) ~[classes/:?]
+	at fa.training.Application.run(Application.java:36) ~[classes/:?]
+	at fa.training.Main.main(Main.java:8) ~[classes/:?]
+10/07/2022 13:32:35 ERROR fa.training.repository.impl.CustomerRepositoryImpl - NoResultException is cause
+10/07/2022 13:32:35 ERROR fa.training.repository.impl.CustomerRepositoryImpl - No entity found for query
+javax.persistence.NoResultException: No entity found for query
+	at org.hibernate.query.internal.AbstractProducedQuery.getSingleResult(AbstractProducedQuery.java:1667) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at fa.training.repository.impl.CustomerRepositoryImpl.get(CustomerRepositoryImpl.java:150) ~[classes/:?]
+	at fa.training.controller.CustomerController.login(CustomerController.java:17) ~[classes/:?]
+	at fa.training.Application.run(Application.java:36) ~[classes/:?]
+	at fa.training.Main.main(Main.java:8) ~[classes/:?]
+10/07/2022 14:05:50 ERROR fa.training.repository.impl.CustomerRepositoryImpl - NoResultException is cause
+10/07/2022 14:05:50 ERROR fa.training.repository.impl.CustomerRepositoryImpl - No entity found for query
+javax.persistence.NoResultException: No entity found for query
+	at org.hibernate.query.internal.AbstractProducedQuery.getSingleResult(AbstractProducedQuery.java:1667) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at fa.training.repository.impl.CustomerRepositoryImpl.get(CustomerRepositoryImpl.java:150) ~[classes/:?]
+	at fa.training.controller.CustomerController.login(CustomerController.java:17) ~[classes/:?]
+	at fa.training.Application.run(Application.java:36) ~[classes/:?]
+	at fa.training.Main.main(Main.java:8) ~[classes/:?]
+10/07/2022 14:06:30 ERROR fa.training.repository.impl.CustomerRepositoryImpl - NoResultException is cause
+10/07/2022 14:06:30 ERROR fa.training.repository.impl.CustomerRepositoryImpl - No entity found for query
+javax.persistence.NoResultException: No entity found for query
+	at org.hibernate.query.internal.AbstractProducedQuery.getSingleResult(AbstractProducedQuery.java:1667) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at fa.training.repository.impl.CustomerRepositoryImpl.get(CustomerRepositoryImpl.java:150) ~[classes/:?]
+	at fa.training.controller.CustomerController.login(CustomerController.java:17) ~[classes/:?]
+	at fa.training.Application.run(Application.java:36) ~[classes/:?]
+	at fa.training.Main.main(Main.java:8) ~[classes/:?]
+10/07/2022 16:43:48 ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper - Violation of UNIQUE KEY constraint 'UK_jl8xc9fsl7kqv1yejvduenycs'. Cannot insert duplicate key in object 'dbo.Role'. The duplicate key value is (QL).
+10/07/2022 16:44:29 ERROR fa.training.repository.impl.CustomerRepositoryImpl - NoResultException is cause
+10/07/2022 16:44:29 ERROR fa.training.repository.impl.CustomerRepositoryImpl - No entity found for query
+javax.persistence.NoResultException: No entity found for query
+	at org.hibernate.query.internal.AbstractProducedQuery.getSingleResult(AbstractProducedQuery.java:1667) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at fa.training.repository.impl.CustomerRepositoryImpl.get(CustomerRepositoryImpl.java:149) ~[classes/:?]
+	at fa.training.gui.CustomerGui.login(CustomerGui.java:23) ~[classes/:?]
+	at fa.training.Application.run(Application.java:47) ~[classes/:?]
+	at fa.training.Main.main(Main.java:8) ~[classes/:?]
+10/07/2022 17:11:35 ERROR fa.training.repository.impl.CustomerRepositoryImpl - NoResultException is cause
+10/07/2022 17:11:35 ERROR fa.training.repository.impl.CustomerRepositoryImpl - No entity found for query
+javax.persistence.NoResultException: No entity found for query
+	at org.hibernate.query.internal.AbstractProducedQuery.getSingleResult(AbstractProducedQuery.java:1667) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at fa.training.repository.impl.CustomerRepositoryImpl.get(CustomerRepositoryImpl.java:149) ~[classes/:?]
+	at fa.training.gui.CustomerGui.login(CustomerGui.java:23) ~[classes/:?]
+	at fa.training.Application.run(Application.java:49) ~[classes/:?]
+	at fa.training.Application.run(Application.java:101) ~[classes/:?]
+	at fa.training.Main.main(Main.java:8) ~[classes/:?]
+10/07/2022 17:27:56 ERROR fa.training.repository.impl.CustomerRepositoryImpl - NoResultException is cause
+10/07/2022 17:27:56 ERROR fa.training.repository.impl.CustomerRepositoryImpl - No entity found for query
+javax.persistence.NoResultException: No entity found for query
+	at org.hibernate.query.internal.AbstractProducedQuery.getSingleResult(AbstractProducedQuery.java:1667) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at fa.training.repository.impl.CustomerRepositoryImpl.get(CustomerRepositoryImpl.java:149) ~[classes/:?]
+	at fa.training.gui.CustomerGui.login(CustomerGui.java:23) ~[classes/:?]
+	at fa.training.Application.run(Application.java:50) ~[classes/:?]
+	at fa.training.Main.main(Main.java:8) ~[classes/:?]
+10/07/2022 17:28:15 ERROR fa.training.repository.impl.ApartmentRepositoryImpl - NoResultException is cause
+10/07/2022 17:28:15 ERROR fa.training.repository.impl.ApartmentRepositoryImpl - No entity found for query
+javax.persistence.NoResultException: No entity found for query
+	at org.hibernate.query.internal.AbstractProducedQuery.getSingleResult(AbstractProducedQuery.java:1667) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at fa.training.repository.impl.ApartmentRepositoryImpl.get(ApartmentRepositoryImpl.java:149) ~[classes/:?]
+	at fa.training.gui.ApartmentGui.retrieveData(ApartmentGui.java:69) ~[classes/:?]
+	at fa.training.Application.run(Application.java:79) ~[classes/:?]
+	at fa.training.Main.main(Main.java:8) ~[classes/:?]
+10/07/2022 17:29:56 ERROR fa.training.repository.impl.CustomerRepositoryImpl - NoResultException is cause
+10/07/2022 17:29:56 ERROR fa.training.repository.impl.CustomerRepositoryImpl - No entity found for query
+javax.persistence.NoResultException: No entity found for query
+	at org.hibernate.query.internal.AbstractProducedQuery.getSingleResult(AbstractProducedQuery.java:1667) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at fa.training.repository.impl.CustomerRepositoryImpl.get(CustomerRepositoryImpl.java:149) ~[classes/:?]
+	at fa.training.gui.CustomerGui.login(CustomerGui.java:23) ~[classes/:?]
+	at fa.training.Application.run(Application.java:50) ~[classes/:?]
+	at fa.training.Main.main(Main.java:8) ~[classes/:?]
+10/07/2022 17:30:15 ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper - An aggregate may not appear in the WHERE clause unless it is in a subquery contained in a HAVING clause or a select list, and the column being aggregated is an outer reference.
+10/07/2022 17:30:15 ERROR fa.training.repository.impl.EmployeeRepositoryImpl - SQLGrammarException is cause
+10/07/2022 17:30:15 ERROR fa.training.repository.impl.EmployeeRepositoryImpl - could not extract ResultSet
+org.hibernate.exception.SQLGrammarException: could not extract ResultSet
+	at org.hibernate.exception.internal.SQLStateConversionDelegate.convert(SQLStateConversionDelegate.java:103) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:37) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:113) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:99) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.extract(ResultSetReturnImpl.java:67) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.loader.Loader.getResultSet(Loader.java:2322) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.loader.Loader.executeQueryStatement(Loader.java:2075) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.loader.Loader.executeQueryStatement(Loader.java:2037) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.loader.Loader.scroll(Loader.java:2945) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.loader.hql.QueryLoader.scroll(QueryLoader.java:610) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.scroll(QueryTranslatorImpl.java:452) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.engine.query.spi.HQLQueryPlan.performScroll(HQLQueryPlan.java:353) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.internal.SessionImpl.scroll(SessionImpl.java:1585) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.query.internal.AbstractProducedQuery.doScroll(AbstractProducedQuery.java:1588) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.query.internal.AbstractProducedQuery.scroll(AbstractProducedQuery.java:1574) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.query.internal.AbstractProducedQuery.stream(AbstractProducedQuery.java:1598) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.query.Query.getResultStream(Query.java:1140) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at fa.training.repository.impl.EmployeeRepositoryImpl.get(EmployeeRepositoryImpl.java:171) ~[classes/:?]
+	at fa.training.gui.EmployeeGui.find(EmployeeGui.java:19) ~[classes/:?]
+	at fa.training.Application.run(Application.java:93) ~[classes/:?]
+	at fa.training.Main.main(Main.java:8) ~[classes/:?]
+Caused by: com.microsoft.sqlserver.jdbc.SQLServerException: An aggregate may not appear in the WHERE clause unless it is in a subquery contained in a HAVING clause or a select list, and the column being aggregated is an outer reference.
+	at com.microsoft.sqlserver.jdbc.SQLServerException.makeFromDatabaseError(SQLServerException.java:265) ~[mssql-jdbc-11.1.1.jre8-preview.jar:?]
+	at com.microsoft.sqlserver.jdbc.SQLServerStatement.getNextResult(SQLServerStatement.java:1676) ~[mssql-jdbc-11.1.1.jre8-preview.jar:?]
+	at com.microsoft.sqlserver.jdbc.SQLServerPreparedStatement.doExecutePreparedStatement(SQLServerPreparedStatement.java:618) ~[mssql-jdbc-11.1.1.jre8-preview.jar:?]
+	at com.microsoft.sqlserver.jdbc.SQLServerPreparedStatement$PrepStmtExecCmd.doExecute(SQLServerPreparedStatement.java:540) ~[mssql-jdbc-11.1.1.jre8-preview.jar:?]
+	at com.microsoft.sqlserver.jdbc.TDSCommand.execute(IOBuffer.java:7601) ~[mssql-jdbc-11.1.1.jre8-preview.jar:?]
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.executeCommand(SQLServerConnection.java:3885) ~[mssql-jdbc-11.1.1.jre8-preview.jar:?]
+	at com.microsoft.sqlserver.jdbc.SQLServerStatement.executeCommand(SQLServerStatement.java:268) ~[mssql-jdbc-11.1.1.jre8-preview.jar:?]
+	at com.microsoft.sqlserver.jdbc.SQLServerStatement.executeStatement(SQLServerStatement.java:242) ~[mssql-jdbc-11.1.1.jre8-preview.jar:?]
+	at com.microsoft.sqlserver.jdbc.SQLServerPreparedStatement.executeQuery(SQLServerPreparedStatement.java:459) ~[mssql-jdbc-11.1.1.jre8-preview.jar:?]
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.extract(ResultSetReturnImpl.java:57) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	... 16 more
+10/07/2022 17:37:08 ERROR fa.training.repository.impl.CustomerRepositoryImpl - NoResultException is cause
+10/07/2022 17:37:08 ERROR fa.training.repository.impl.CustomerRepositoryImpl - No entity found for query
+javax.persistence.NoResultException: No entity found for query
+	at org.hibernate.query.internal.AbstractProducedQuery.getSingleResult(AbstractProducedQuery.java:1667) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at fa.training.repository.impl.CustomerRepositoryImpl.get(CustomerRepositoryImpl.java:149) ~[classes/:?]
+	at fa.training.gui.CustomerGui.login(CustomerGui.java:23) ~[classes/:?]
+	at fa.training.Application.run(Application.java:50) ~[classes/:?]
+	at fa.training.Main.main(Main.java:8) ~[classes/:?]
+10/07/2022 17:37:23 ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper - An aggregate may not appear in the WHERE clause unless it is in a subquery contained in a HAVING clause or a select list, and the column being aggregated is an outer reference.
+10/07/2022 17:37:23 ERROR fa.training.repository.impl.EmployeeRepositoryImpl - SQLGrammarException is cause
+10/07/2022 17:37:23 ERROR fa.training.repository.impl.EmployeeRepositoryImpl - could not extract ResultSet
+org.hibernate.exception.SQLGrammarException: could not extract ResultSet
+	at org.hibernate.exception.internal.SQLStateConversionDelegate.convert(SQLStateConversionDelegate.java:103) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:37) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:113) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:99) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.extract(ResultSetReturnImpl.java:67) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.loader.Loader.getResultSet(Loader.java:2322) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.loader.Loader.executeQueryStatement(Loader.java:2075) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.loader.Loader.executeQueryStatement(Loader.java:2037) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.loader.Loader.scroll(Loader.java:2945) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.loader.hql.QueryLoader.scroll(QueryLoader.java:610) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.scroll(QueryTranslatorImpl.java:452) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.engine.query.spi.HQLQueryPlan.performScroll(HQLQueryPlan.java:353) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.internal.SessionImpl.scroll(SessionImpl.java:1585) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.query.internal.AbstractProducedQuery.doScroll(AbstractProducedQuery.java:1588) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.query.internal.AbstractProducedQuery.scroll(AbstractProducedQuery.java:1574) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.query.internal.AbstractProducedQuery.stream(AbstractProducedQuery.java:1598) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.query.Query.getResultStream(Query.java:1140) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at fa.training.repository.impl.EmployeeRepositoryImpl.get(EmployeeRepositoryImpl.java:171) ~[classes/:?]
+	at fa.training.gui.EmployeeGui.find(EmployeeGui.java:19) ~[classes/:?]
+	at fa.training.Application.run(Application.java:93) ~[classes/:?]
+	at fa.training.Main.main(Main.java:8) ~[classes/:?]
+Caused by: com.microsoft.sqlserver.jdbc.SQLServerException: An aggregate may not appear in the WHERE clause unless it is in a subquery contained in a HAVING clause or a select list, and the column being aggregated is an outer reference.
+	at com.microsoft.sqlserver.jdbc.SQLServerException.makeFromDatabaseError(SQLServerException.java:265) ~[mssql-jdbc-11.1.1.jre8-preview.jar:?]
+	at com.microsoft.sqlserver.jdbc.SQLServerStatement.getNextResult(SQLServerStatement.java:1676) ~[mssql-jdbc-11.1.1.jre8-preview.jar:?]
+	at com.microsoft.sqlserver.jdbc.SQLServerPreparedStatement.doExecutePreparedStatement(SQLServerPreparedStatement.java:618) ~[mssql-jdbc-11.1.1.jre8-preview.jar:?]
+	at com.microsoft.sqlserver.jdbc.SQLServerPreparedStatement$PrepStmtExecCmd.doExecute(SQLServerPreparedStatement.java:540) ~[mssql-jdbc-11.1.1.jre8-preview.jar:?]
+	at com.microsoft.sqlserver.jdbc.TDSCommand.execute(IOBuffer.java:7601) ~[mssql-jdbc-11.1.1.jre8-preview.jar:?]
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.executeCommand(SQLServerConnection.java:3885) ~[mssql-jdbc-11.1.1.jre8-preview.jar:?]
+	at com.microsoft.sqlserver.jdbc.SQLServerStatement.executeCommand(SQLServerStatement.java:268) ~[mssql-jdbc-11.1.1.jre8-preview.jar:?]
+	at com.microsoft.sqlserver.jdbc.SQLServerStatement.executeStatement(SQLServerStatement.java:242) ~[mssql-jdbc-11.1.1.jre8-preview.jar:?]
+	at com.microsoft.sqlserver.jdbc.SQLServerPreparedStatement.executeQuery(SQLServerPreparedStatement.java:459) ~[mssql-jdbc-11.1.1.jre8-preview.jar:?]
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.extract(ResultSetReturnImpl.java:57) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	... 16 more
+10/07/2022 17:38:35 ERROR fa.training.repository.impl.CustomerRepositoryImpl - NoResultException is cause
+10/07/2022 17:38:35 ERROR fa.training.repository.impl.CustomerRepositoryImpl - No entity found for query
+javax.persistence.NoResultException: No entity found for query
+	at org.hibernate.query.internal.AbstractProducedQuery.getSingleResult(AbstractProducedQuery.java:1667) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at fa.training.repository.impl.CustomerRepositoryImpl.get(CustomerRepositoryImpl.java:149) ~[classes/:?]
+	at fa.training.gui.CustomerGui.login(CustomerGui.java:23) ~[classes/:?]
+	at fa.training.Application.run(Application.java:50) ~[classes/:?]
+	at fa.training.Main.main(Main.java:8) ~[classes/:?]
+10/07/2022 17:38:43 ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper - An aggregate may not appear in the WHERE clause unless it is in a subquery contained in a HAVING clause or a select list, and the column being aggregated is an outer reference.
+10/07/2022 17:38:43 ERROR fa.training.repository.impl.EmployeeRepositoryImpl - SQLGrammarException is cause
+10/07/2022 17:38:43 ERROR fa.training.repository.impl.EmployeeRepositoryImpl - could not extract ResultSet
+org.hibernate.exception.SQLGrammarException: could not extract ResultSet
+	at org.hibernate.exception.internal.SQLStateConversionDelegate.convert(SQLStateConversionDelegate.java:103) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:37) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:113) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:99) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.extract(ResultSetReturnImpl.java:67) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.loader.Loader.getResultSet(Loader.java:2322) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.loader.Loader.executeQueryStatement(Loader.java:2075) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.loader.Loader.executeQueryStatement(Loader.java:2037) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.loader.Loader.scroll(Loader.java:2945) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.loader.hql.QueryLoader.scroll(QueryLoader.java:610) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.scroll(QueryTranslatorImpl.java:452) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.engine.query.spi.HQLQueryPlan.performScroll(HQLQueryPlan.java:353) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.internal.SessionImpl.scroll(SessionImpl.java:1585) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.query.internal.AbstractProducedQuery.doScroll(AbstractProducedQuery.java:1588) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.query.internal.AbstractProducedQuery.scroll(AbstractProducedQuery.java:1574) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.query.internal.AbstractProducedQuery.stream(AbstractProducedQuery.java:1598) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.query.Query.getResultStream(Query.java:1140) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at fa.training.repository.impl.EmployeeRepositoryImpl.get(EmployeeRepositoryImpl.java:171) ~[classes/:?]
+	at fa.training.gui.EmployeeGui.find(EmployeeGui.java:19) ~[classes/:?]
+	at fa.training.Application.run(Application.java:93) ~[classes/:?]
+	at fa.training.Main.main(Main.java:8) ~[classes/:?]
+Caused by: com.microsoft.sqlserver.jdbc.SQLServerException: An aggregate may not appear in the WHERE clause unless it is in a subquery contained in a HAVING clause or a select list, and the column being aggregated is an outer reference.
+	at com.microsoft.sqlserver.jdbc.SQLServerException.makeFromDatabaseError(SQLServerException.java:265) ~[mssql-jdbc-11.1.1.jre8-preview.jar:?]
+	at com.microsoft.sqlserver.jdbc.SQLServerStatement.getNextResult(SQLServerStatement.java:1676) ~[mssql-jdbc-11.1.1.jre8-preview.jar:?]
+	at com.microsoft.sqlserver.jdbc.SQLServerPreparedStatement.doExecutePreparedStatement(SQLServerPreparedStatement.java:618) ~[mssql-jdbc-11.1.1.jre8-preview.jar:?]
+	at com.microsoft.sqlserver.jdbc.SQLServerPreparedStatement$PrepStmtExecCmd.doExecute(SQLServerPreparedStatement.java:540) ~[mssql-jdbc-11.1.1.jre8-preview.jar:?]
+	at com.microsoft.sqlserver.jdbc.TDSCommand.execute(IOBuffer.java:7601) ~[mssql-jdbc-11.1.1.jre8-preview.jar:?]
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.executeCommand(SQLServerConnection.java:3885) ~[mssql-jdbc-11.1.1.jre8-preview.jar:?]
+	at com.microsoft.sqlserver.jdbc.SQLServerStatement.executeCommand(SQLServerStatement.java:268) ~[mssql-jdbc-11.1.1.jre8-preview.jar:?]
+	at com.microsoft.sqlserver.jdbc.SQLServerStatement.executeStatement(SQLServerStatement.java:242) ~[mssql-jdbc-11.1.1.jre8-preview.jar:?]
+	at com.microsoft.sqlserver.jdbc.SQLServerPreparedStatement.executeQuery(SQLServerPreparedStatement.java:459) ~[mssql-jdbc-11.1.1.jre8-preview.jar:?]
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.extract(ResultSetReturnImpl.java:57) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	... 16 more
+10/07/2022 17:42:31 ERROR fa.training.repository.impl.CustomerRepositoryImpl - NoResultException is cause
+10/07/2022 17:42:31 ERROR fa.training.repository.impl.CustomerRepositoryImpl - No entity found for query
+javax.persistence.NoResultException: No entity found for query
+	at org.hibernate.query.internal.AbstractProducedQuery.getSingleResult(AbstractProducedQuery.java:1667) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at fa.training.repository.impl.CustomerRepositoryImpl.get(CustomerRepositoryImpl.java:149) ~[classes/:?]
+	at fa.training.gui.CustomerGui.login(CustomerGui.java:23) ~[classes/:?]
+	at fa.training.Application.run(Application.java:50) ~[classes/:?]
+	at fa.training.Main.main(Main.java:8) ~[classes/:?]
+10/07/2022 17:43:54 ERROR fa.training.repository.impl.CustomerRepositoryImpl - NoResultException is cause
+10/07/2022 17:43:54 ERROR fa.training.repository.impl.CustomerRepositoryImpl - No entity found for query
+javax.persistence.NoResultException: No entity found for query
+	at org.hibernate.query.internal.AbstractProducedQuery.getSingleResult(AbstractProducedQuery.java:1667) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at fa.training.repository.impl.CustomerRepositoryImpl.get(CustomerRepositoryImpl.java:149) ~[classes/:?]
+	at fa.training.gui.CustomerGui.login(CustomerGui.java:23) ~[classes/:?]
+	at fa.training.Application.run(Application.java:50) ~[classes/:?]
+	at fa.training.Main.main(Main.java:8) ~[classes/:?]
+10/07/2022 17:44:07 ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper - An aggregate may not appear in the WHERE clause unless it is in a subquery contained in a HAVING clause or a select list, and the column being aggregated is an outer reference.
+10/07/2022 17:44:07 ERROR fa.training.repository.impl.EmployeeRepositoryImpl - SQLGrammarException is cause
+10/07/2022 17:44:07 ERROR fa.training.repository.impl.EmployeeRepositoryImpl - could not extract ResultSet
+org.hibernate.exception.SQLGrammarException: could not extract ResultSet
+	at org.hibernate.exception.internal.SQLStateConversionDelegate.convert(SQLStateConversionDelegate.java:103) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:37) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:113) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:99) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.extract(ResultSetReturnImpl.java:67) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.loader.Loader.getResultSet(Loader.java:2322) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.loader.Loader.executeQueryStatement(Loader.java:2075) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.loader.Loader.executeQueryStatement(Loader.java:2037) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.loader.Loader.scroll(Loader.java:2945) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.loader.hql.QueryLoader.scroll(QueryLoader.java:610) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.scroll(QueryTranslatorImpl.java:452) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.engine.query.spi.HQLQueryPlan.performScroll(HQLQueryPlan.java:353) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.internal.SessionImpl.scroll(SessionImpl.java:1585) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.query.internal.AbstractProducedQuery.doScroll(AbstractProducedQuery.java:1588) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.query.internal.AbstractProducedQuery.scroll(AbstractProducedQuery.java:1574) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.query.internal.AbstractProducedQuery.stream(AbstractProducedQuery.java:1598) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at org.hibernate.query.Query.getResultStream(Query.java:1140) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	at fa.training.repository.impl.EmployeeRepositoryImpl.get(EmployeeRepositoryImpl.java:171) ~[classes/:?]
+	at fa.training.gui.EmployeeGui.find(EmployeeGui.java:22) ~[classes/:?]
+	at fa.training.Application.run(Application.java:93) ~[classes/:?]
+	at fa.training.Main.main(Main.java:8) ~[classes/:?]
+Caused by: com.microsoft.sqlserver.jdbc.SQLServerException: An aggregate may not appear in the WHERE clause unless it is in a subquery contained in a HAVING clause or a select list, and the column being aggregated is an outer reference.
+	at com.microsoft.sqlserver.jdbc.SQLServerException.makeFromDatabaseError(SQLServerException.java:265) ~[mssql-jdbc-11.1.1.jre8-preview.jar:?]
+	at com.microsoft.sqlserver.jdbc.SQLServerStatement.getNextResult(SQLServerStatement.java:1676) ~[mssql-jdbc-11.1.1.jre8-preview.jar:?]
+	at com.microsoft.sqlserver.jdbc.SQLServerPreparedStatement.doExecutePreparedStatement(SQLServerPreparedStatement.java:618) ~[mssql-jdbc-11.1.1.jre8-preview.jar:?]
+	at com.microsoft.sqlserver.jdbc.SQLServerPreparedStatement$PrepStmtExecCmd.doExecute(SQLServerPreparedStatement.java:540) ~[mssql-jdbc-11.1.1.jre8-preview.jar:?]
+	at com.microsoft.sqlserver.jdbc.TDSCommand.execute(IOBuffer.java:7601) ~[mssql-jdbc-11.1.1.jre8-preview.jar:?]
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.executeCommand(SQLServerConnection.java:3885) ~[mssql-jdbc-11.1.1.jre8-preview.jar:?]
+	at com.microsoft.sqlserver.jdbc.SQLServerStatement.executeCommand(SQLServerStatement.java:268) ~[mssql-jdbc-11.1.1.jre8-preview.jar:?]
+	at com.microsoft.sqlserver.jdbc.SQLServerStatement.executeStatement(SQLServerStatement.java:242) ~[mssql-jdbc-11.1.1.jre8-preview.jar:?]
+	at com.microsoft.sqlserver.jdbc.SQLServerPreparedStatement.executeQuery(SQLServerPreparedStatement.java:459) ~[mssql-jdbc-11.1.1.jre8-preview.jar:?]
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.extract(ResultSetReturnImpl.java:57) ~[hibernate-core-5.5.7.Final.jar:5.5.7.Final]
+	... 16 more

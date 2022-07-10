@@ -19,7 +19,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import java.beans.ConstructorProperties;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Objects;
@@ -37,11 +36,9 @@ public class Employee implements Serializable {
     @Column(name = "Employee_Id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer employeeId;
-
     @Column(name = "Employee_Name")
     @NonNull
     private String employeeName;
-
     @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.DETACH,
                                                   CascadeType.MERGE,
                                                   CascadeType.REFRESH})
@@ -52,7 +49,8 @@ public class Employee implements Serializable {
 
     @OneToMany(mappedBy = "employee", cascade = {CascadeType.DETACH,
                                                  CascadeType.MERGE,
-                                                 CascadeType.REFRESH})
+                                                 CascadeType.REFRESH,
+                                                 CascadeType.PERSIST})
     @ToString.Exclude
     Set<Bill> bills = new HashSet<>();
 

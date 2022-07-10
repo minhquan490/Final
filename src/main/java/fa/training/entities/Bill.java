@@ -36,19 +36,28 @@ public class Bill implements Serializable {
     @Column(name = "Bill_Id")
     private Integer billId;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.DETACH, CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
+    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.DETACH,
+                                                  CascadeType.PERSIST,
+                                                  CascadeType.MERGE,
+                                                  CascadeType.REFRESH})
     @JoinColumn(name = "Employee_Id")
     @ToString.Exclude
     @NonNull
     private Employee employee;
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.DETACH, CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
+    @OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.DETACH,
+                                                 CascadeType.PERSIST,
+                                                 CascadeType.MERGE,
+                                                 CascadeType.REFRESH})
     @JoinColumn(name = "Apartment_Id")
     @ToString.Exclude
     @NonNull
     private Apartment apartment;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.DETACH, CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
+    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.DETACH,
+                                                  CascadeType.PERSIST,
+                                                  CascadeType.MERGE,
+                                                  CascadeType.REFRESH})
     @JoinColumn(name = "Customer_Id")
     @ToString.Exclude
     @NonNull

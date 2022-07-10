@@ -2,8 +2,8 @@ package fa.training.repository.impl;
 
 import fa.training.annotation.Inject;
 import fa.training.annotation.Repository;
-import fa.training.entities.Role;
-import fa.training.repository.RoleRepository;
+import fa.training.entities.Employee;
+import fa.training.repository.EmployeeRepository;
 import lombok.extern.log4j.Log4j2;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -20,13 +20,13 @@ import static fa.training.annotation.resolver.InjectType.SESSION;
 
 @Log4j2
 @Repository
-public class RoleRepositoryImpl implements RoleRepository {
+public class EmployeeRepositoryImpl implements EmployeeRepository {
 
     @Inject(SESSION)
     private Session session;
 
     @Override
-    public boolean save(Role role) {
+    public boolean save(Employee employee) {
         inject(this);
         Transaction transaction = null;
         try {
@@ -34,8 +34,8 @@ public class RoleRepositoryImpl implements RoleRepository {
             if (transaction != null) {
                 log.info("Begin transaction at: " + LocalDateTime.now());
             }
-            session.save(role);
-            log.info("Persist " + role.getClass().getSimpleName() + " success at: " + LocalDateTime.now());
+            session.save(employee);
+            log.info("Persist " + employee.getClass().getSimpleName() + " success at: " + LocalDateTime.now());
             transaction.commit();
             log.info("Commit transaction at: " + LocalDateTime.now());
             return true;
@@ -57,7 +57,7 @@ public class RoleRepositoryImpl implements RoleRepository {
     }
 
     @Override
-    public boolean edit(Role role) {
+    public boolean edit(Employee employee) {
         inject(this);
         Transaction transaction = null;
         try {
@@ -65,8 +65,8 @@ public class RoleRepositoryImpl implements RoleRepository {
             if (transaction != null) {
                 log.info("Begin transaction at: " + LocalDateTime.now());
             }
-            session.update(role);
-            log.info("Update " + role.getClass().getSimpleName() + " success at: " + LocalDateTime.now());
+            session.update(employee);
+            log.info("Update " + employee.getClass().getSimpleName() + " success at: " + LocalDateTime.now());
             transaction.commit();
             log.info("Commit transaction and save change to database at: " + LocalDateTime.now());
             return true;
@@ -88,7 +88,7 @@ public class RoleRepositoryImpl implements RoleRepository {
     }
 
     @Override
-    public boolean delete(Role role) {
+    public boolean delete(Employee employee) {
         inject(this);
         Transaction transaction = null;
         try {
@@ -96,8 +96,8 @@ public class RoleRepositoryImpl implements RoleRepository {
             if (transaction != null) {
                 log.info("Begin transaction at: " + LocalDateTime.now());
             }
-            session.delete(role);
-            log.info("Delete " + role.getClass().getSimpleName() + " success at: " + LocalDateTime.now());
+            session.delete(employee);
+            log.info("Delete " + employee.getClass().getSimpleName() + " success at: " + LocalDateTime.now());
             transaction.commit();
             log.info("Commit transaction and save change to database at: " + LocalDateTime.now());
             return true;
@@ -119,13 +119,13 @@ public class RoleRepositoryImpl implements RoleRepository {
     }
 
     @Override
-    public Role get(int roleId) {
-        String hql = "select r from Role r where r.roleId = :roleId";
+    public Employee get(int employeeId) {
+        String hql = "select e from Employee e where e.employeeId = :employeeId";
         inject(this);
         try {
-            Query query = session.createQuery(hql).setParameter("roleId", roleId);
+            Query query = session.createQuery(hql).setParameter("employeeId", employeeId);
             log.info("Query data base success and retrieve data at: " + LocalDateTime.now());
-            return (Role) query.getSingleResult();
+            return (Employee) query.getSingleResult();
         } catch (Exception e) {
             log.error(e.getClass().getSimpleName() + " is cause");
             log.error(e.getMessage(), e);
@@ -140,13 +140,13 @@ public class RoleRepositoryImpl implements RoleRepository {
     }
 
     @Override
-    public Role get(String roleName) {
-        String hql = "select r from Role r where r.roleName = :roleName";
+    public Employee get(String employeeName) {
+        String hql = "select e from Employee e where e.employeeName = :employeeName";
         inject(this);
         try {
-            Query query = session.createQuery(hql).setParameter("roleName", roleName);
+            Query query = session.createQuery(hql).setParameter("employeeName", employeeName);
             log.info("Query data base success and retrieve data at: " + LocalDateTime.now());
-            return (Role) query.getSingleResult();
+            return (Employee) query.getSingleResult();
         } catch (Exception e) {
             log.error(e.getClass().getSimpleName() + " is cause");
             log.error(e.getMessage(), e);
@@ -162,13 +162,57 @@ public class RoleRepositoryImpl implements RoleRepository {
 
     @Override
     @SuppressWarnings("unchecked")
-    public Set<Role> getAll() {
-        String hql = "select r from Role r";
+    public Set<Employee> get() {
+        String hql = "select e from Employee e join fetch e.role r join fetch e.bills b where count(b.billId) < 3 and r.roleName = :roleName";
+        inject(this);
+        try {
+            Query query = session.createQuery(hql).setParameter("roleName", "NV");
+            log.info("Query data base success and retrieve data at: " + LocalDateTime.now());
+            return (Set<Employee>) query.getResultStream().collect(Collectors.toSet());
+        } catch (Exception e) {
+            log.error(e.getClass().getSimpleName() + " is cause");
+            log.error(e.getMessage(), e);
+            return null;
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+            log.info("Close transaction at: " + LocalDateTime.now());
+            session = null;
+        }
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public Set<Employee> getIfBillNull() {
+        String hql = "select e from Employee e join fetch e.role r where r.roleName = :roleName";
+        inject(this);
+        try {
+            Query query = session.createQuery(hql).setParameter("roleName", "NV");
+            log.info("Query data base success and retrieve data at: " + LocalDateTime.now());
+            return (Set<Employee>) query.getResultStream().collect(Collectors.toSet());
+        } catch (Exception e) {
+            log.error(e.getClass().getSimpleName() + " is cause");
+            log.error(e.getMessage(), e);
+            return null;
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+            log.info("Close transaction at: " + LocalDateTime.now());
+            session = null;
+        }
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public Set<Employee> getAll() {
+        String hql = "select e from Employee e";
         inject(this);
         try {
             Query query = session.createQuery(hql);
             log.info("Query data base success and retrieve data at: " + LocalDateTime.now());
-            return (Set<Role>) query.getResultStream().collect(Collectors.toSet());
+            return (Set<Employee>) query.getResultStream().collect(Collectors.toSet());
         } catch (Exception e) {
             log.error(e.getClass().getSimpleName() + " is cause");
             log.error(e.getMessage(), e);
